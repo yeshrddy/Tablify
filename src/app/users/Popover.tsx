@@ -64,7 +64,7 @@ export default function Edit(props: Record<string, any>) {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save once you're done.
+            Make changes to your profile here. Click save once you&apos;redone.
           </DialogDescription>
         </DialogHeader>
         <div>

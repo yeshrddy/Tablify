@@ -70,6 +70,11 @@ export function DataTable<TData, TValue>({
       globalFilter: query
     },
     meta: {
+      removeRow: (rowIndex: number) => {
+        setTableData((prev) =>
+          prev.filter((row, index) => index !== rowIndex)
+        );
+      },
       updateData: (rowIndex: number, columnId: string, value: any) => {
         setTableData((prev) =>
           prev.map((row, index) =>
@@ -82,11 +87,6 @@ export function DataTable<TData, TValue>({
           )
         );
       },
-      deleteData: (rowIndex: number) => {
-        setTableData((prev) =>
-          prev.filter((row, index) => index !== rowIndex)
-        );
-      }
     }
   });
 
@@ -104,6 +104,7 @@ export function DataTable<TData, TValue>({
   const [loading, setLoading] = React.useState(false);
   const handleExportExcel = async () => {
     setLoading(true);
+    // @ts-ignore
     downloadToExcel(tableData, "userData", "userData")
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setLoading(false);

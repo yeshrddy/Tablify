@@ -54,12 +54,14 @@ export const columns: ColumnDef<User>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({row, table}) => {
+      // @ts-ignore
+      const { removeRow } = table.options.meta;
       return (
         <Button 
           variant="outline" 
           size="icon"
           onClick={()=> {
-            table.options.meta?.deleteData(row.index);
+            removeRow(row.index);
           }}
           >
           <Trash className="h-4 w-4" />
